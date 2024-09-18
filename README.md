@@ -21,8 +21,8 @@ This project is a simple URL shortener API built with [FastAPI](https://fastapi.
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/NewalexOA/5DHUB_Introductory-task-fastapi.git
+   cd 5DHUB_Introductory-task-fastapi
    ```
 
 2. **Create and activate a virtual environment**:
