@@ -1,4 +1,3 @@
-
 # URL Shortener API with FastAPI and SQLAlchemy
 
 This project is a simple URL shortener API built with [FastAPI](https://fastapi.tiangolo.com/) and [SQLAlchemy](https://www.sqlalchemy.org/) for handling the database. The application supports shortening URLs, redirecting to original URLs, and uses an SQLite database by default (with easy switching to PostgreSQL).
@@ -9,6 +8,7 @@ This project is a simple URL shortener API built with [FastAPI](https://fastapi.
 - Redirect users to the original URL when they access the shortened URL.
 - Database support with SQLAlchemy (default is SQLite, easily configurable for PostgreSQL).
 - Fully asynchronous with FastAPI for high performance.
+- Configurable constants for short URL generation in `constants.py`.
 
 ## Prerequisites
 
@@ -58,7 +58,11 @@ By default, the project uses SQLite as the database. If you want to switch to Po
    export DATABASE_URL="postgresql://username:password@localhost/dbname"
    ```
 
-2. **Database migration** (optional):
+2. **Constants configuration**:
+
+   You can configure the length of the short URL, maximum attempts for generating a unique ID, and other settings in `app/constants.py`.
+
+3. **Database migration** (optional):
 
    To manage migrations (if needed), consider using [Alembic](https://alembic.sqlalchemy.org/en/latest/). This is especially useful if you're planning to extend the schema in the future.
 
@@ -67,7 +71,7 @@ By default, the project uses SQLite as the database. If you want to switch to Po
 1. **Run the development server**:
 
    ```bash
-   uvicorn app.main:app --reload --host 127.0.0.1 --port 8080
+   uvicorn main:app --reload --host 127.0.0.1 --port 8080
    ```
 
 2. **Access the API**:
@@ -91,8 +95,10 @@ By default, the project uses SQLite as the database. If you want to switch to Po
 - **Response**:
 
    ```json
-   {
-     "short_url": "http://127.0.0.1:8080/abc123"
+  {
+    "id": 1,
+    "short_url": "http://127.0.0.1:8080/abc123",
+    "target_url": "https://example.com/"
    }
    ```
 
