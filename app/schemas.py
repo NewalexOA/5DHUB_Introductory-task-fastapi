@@ -1,12 +1,14 @@
 from pydantic import BaseModel, HttpUrl
 
-# Schema for incoming request
-class URLRequest(BaseModel):
-    url: HttpUrl  # The URL to be shortened
 
-# Schema for response
-class URLInfo(BaseModel):
-    short_url: str  # The shortened URL
+class URLCreate(BaseModel):
+    url: HttpUrl
+
+
+class URLDB(BaseModel):
+    id: int
+    short_url: str
+    target_url: HttpUrl
 
     class Config:
-        from_attributes = True  # Allow attributes to be used as fields
+        from_attributes = True
